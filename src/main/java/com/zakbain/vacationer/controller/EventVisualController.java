@@ -32,9 +32,10 @@ public class EventVisualController {
     @PostMapping("/addEvent")
     public String addEvent(@Valid Event event, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-user";
+            return "createEventForm";
         }
 
+        event.setCompleted(false);
         eventRepository.save(event);
         model.addAttribute("events", eventRepository.findAll());
         return "allEvents";
