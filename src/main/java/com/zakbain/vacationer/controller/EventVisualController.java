@@ -38,7 +38,6 @@ public class EventVisualController {
         event.setCompleted(false);
         eventRepository.save(event);
         model.addAttribute("events", eventRepository.findAll());
-        return "allEvents";
+        return "index";
     }
-
 }

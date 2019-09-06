@@ -25,8 +25,15 @@ public class Event {
     @Column
     private Boolean completed;
 
-    @Column(name = "user_id")
-    private long userId;
+    public Event() {}
+
+    public Event(String location, String description, Date startAt, boolean completed) {
+        this.location = location;
+        this.description = description;
+        this.startAt = startAt;
+        this.completed = completed;
+    };
+
     public long getId() {
         return id;
     }
@@ -66,14 +73,4 @@ public class Event {
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-
 }
