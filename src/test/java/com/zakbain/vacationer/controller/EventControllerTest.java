@@ -1,4 +1,4 @@
-package com.zakbain.vacationer;
+package com.zakbain.vacationer.controller;
 
 import com.zakbain.vacationer.controller.EventController;
 import com.zakbain.vacationer.model.Event;

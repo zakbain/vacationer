@@ -69,6 +69,7 @@ public class EventController {
 
     @RequestMapping("/createDefaults")
     public String createDefaults(Model model) {
+        //For demo purpose, quickly populate results
         new DefaultEventPopulater().populateEventRepository(eventRepository);
         model.addAttribute("events", eventRepository.findAll());
         return "index";
