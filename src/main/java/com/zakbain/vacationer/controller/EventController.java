@@ -2,6 +2,7 @@ package com.zakbain.vacationer.controller;
 
 import com.zakbain.vacationer.model.Event;
 import com.zakbain.vacationer.repository.EventRepository;
+import com.zakbain.vacationer.util.DefaultEventPopulater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,20 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/eventVisual")
-public class EventVisualController {
-    @Autowired
-    private EventRepository eventRepository;
+@RequestMapping("")
+public class EventController {
+    private final EventRepository eventRepository;
 
-    @GetMapping("/all")
-    public String showAll(Model model) {
-        model.addAttribute("events", eventRepository.findAll());
-        return "allEvents";
+    @Autowired
+    public EventController(EventRepository eventRepository) {
+        this.eventRepository = eventRepository;
     }
 
     @GetMapping("/createEvent")
     public String createEvent(Event event)  {
-        return "createEventForm";
+        return "createEvent";
     }
 
     @PostMapping("/addEvent")
@@ -36,7 +35,6 @@ public class EventVisualController {
             return "createEventForm";
         }
 
-        event.setCompleted(false);
         eventRepository.save(event);
         model.addAttribute("events", eventRepository.findAll());
         return "index";
@@ -65,6 +63,13 @@ public class EventVisualController {
     public String deleteEvent(@PathVariable("id") long id, Model model) {
         Event event  = eventRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Event Id:" + id));
         eventRepository.delete(event);
+        model.addAttribute("events", eventRepository.findAll());
+        return "index";
+    }
+
+    @RequestMapping("/createDefaults")
+    public String createDefaults(Model model) {
+        new DefaultEventPopulater().populateEventRepository(eventRepository);
         model.addAttribute("events", eventRepository.findAll());
         return "index";
     }

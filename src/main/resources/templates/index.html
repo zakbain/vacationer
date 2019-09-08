@@ -38,13 +38,13 @@
                         <td th:text="${event.description}"></td>
                         <td th:text="${event.startAt}"></td>
                         <td th:text="${event.completed}"></td>
-                        <td><a th:href="@{/eventVisual/edit/{id}(id=${event.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                        <td><a th:href="@{/eventVisual/delete/{id}(id=${event.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                        <td><a th:href="@{/edit/{id}(id=${event.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                        <td><a th:href="@{/delete/{id}(id=${event.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="my-5"><a href="/eventVisual/createEvent" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
+            <p class="my-5"><a href="/createEvent" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
         </div>
     </div>
 </div>
