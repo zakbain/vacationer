@@ -32,7 +32,7 @@ public class EventController {
     @PostMapping("/addEvent")
     public String addEvent(@Valid Event event, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "createEventForm";
+            return "createEvent";
         }
 
         eventRepository.save(event);
