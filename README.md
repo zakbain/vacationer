@@ -40,10 +40,13 @@ Finally, the phone app will be available in all platforms using React-Native.
  * Open terminal
  * Change directory to the root 
  * mvn spring-boot:run
+ * Go to localhost:8081
+ * Username: user
+ * Password: passsword
 
 ### Special Instruction ###
-Username: user
-Password: password
+ * Username: user
+ * Password: password
 
 ### Things Learned ###
 I learned how important it is to implement an MVP of all pieces before enhancing any one piece. When
@@ -51,4 +54,3 @@ I first started, I had grand ideas of really enhancing the Java Backend. I wante
 per each individual user (rather than a generic login). I wanted to generate a report and schedule 
 of events. But, I quickly realized there wasn't much time and switched to implementing a different
 layer of the application - UI tweaks.
- 
